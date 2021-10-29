@@ -29,19 +29,11 @@ body {
   font-size: 2rem;
 }
 
-.level-two {
+.level-two,
+.level-three {
   display: none;
 }
-.next-button {
-  padding: 1rem 3rem;
-  background: rgb(24, 114, 174);
-  color: white;
-  border: none;
-  cursor: pointer;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-}
+
 .spooky-picture {
   position: fixed;
   top: 0;
