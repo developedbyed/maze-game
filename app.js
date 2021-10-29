@@ -1,6 +1,7 @@
 //svg mazes
 const levelOne = document.querySelector(".level-one");
 const levelTwo = document.querySelector(".level-two");
+const levelThree = document.querySelector(".level-three");
 //UI MESSAGES
 const uiLevel = document.querySelector(".ui-level");
 const uiMessage = document.querySelector(".ui-message");
@@ -15,6 +16,11 @@ const levelCheck = () => {
     levelOne.style.display = "none";
     levelTwo.style.display = "block";
     uiLevel.textContent = "Level 2";
+    uiMessage.textContent = "Two more to go...";
+  } else if (level === 3) {
+    levelTwo.style.display = "none";
+    levelThree.style.display = "block";
+    uiLevel.textContent = "Level 3";
     uiMessage.textContent = "One more to go...";
   }
 }
