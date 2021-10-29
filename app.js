@@ -1,7 +1,7 @@
-const nextButton = document.querySelector(".next-button");
 //svg mazes
 const levelOne = document.querySelector(".level-one");
 const levelTwo = document.querySelector(".level-two");
+const levelThree = document.querySelector(".level-three");
 //UI MESSAGES
 const uiLevel = document.querySelector(".ui-level");
 const uiMessage = document.querySelector(".ui-message");
@@ -9,12 +9,27 @@ const uiMessage = document.querySelector(".ui-message");
 const spookyPicture = document.querySelector(".spooky-picture");
 const screamSound = document.querySelector(".scream-sound");
 
+let level = 1;
+
+const levelCheck = () => {
+  if (level === 2) {
+    levelOne.style.display = "none";
+    levelTwo.style.display = "block";
+    uiLevel.textContent = "Level 2";
+    uiMessage.textContent = "Two more to go...";
+  } else if (level === 3) {
+    levelTwo.style.display = "none";
+    levelThree.style.display = "block";
+    uiLevel.textContent = "Level 3";
+    uiMessage.textContent = "One more to go...";
+  }
+}
+
 const collisionCheck = (value) => {
   if (value === "maze-border") alert("You lost...try again.");
   if (value === "finish") {
-    nextButton.style.opacity = 1;
-    nextButton.style.pointerEvents = "all";
-    levelOne.style.pointerEvents = "none";
+    level += 1;
+    levelCheck();
   }
   if (value === "end-game") {
     screamSound.play();
@@ -26,13 +41,4 @@ const collisionCheck = (value) => {
 window.addEventListener("mousemove", (e) => {
   let check = e.target.classList.value;
   collisionCheck(check);
-});
-
-nextButton.addEventListener("click", () => {
-  levelOne.style.display = "none";
-  levelTwo.style.display = "block";
-  nextButton.style.opacity = 0;
-  nextButton.style.pointerEvents = "none";
-  uiLevel.textContent = "Level 2";
-  uiMessage.textContent = "One more to go...";
 });
